@@ -5,7 +5,7 @@ Semi Adversarial Networks (SAN)
 ## Paper 
 
 [https://arxiv.org/abs/1712.00321](Semi-Adversarial Networks: Convolutional Autoencoders for Imparting Privacy to Face Images), 
-[https://github.com/vmirly](V. Mirjalili), [https://github.com/rasbt](S. Raschka), [https://www.iiit.ac.in/people/faculty/anoop/](A. Namboodiri), and [http://www.cse.msu.edu/~rossarun/](Arun Ross)
+[V. Mirjalili](https://github.com/vmirly), [S. Raschka](https://github.com/rasbt), [A. Namboodiri](https://www.iiit.ac.in/people/faculty/anoop/), and [A. Ross](http://www.cse.msu.edu/~rossarun/)
 
 
 
