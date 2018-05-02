@@ -15,8 +15,3 @@ Authors: [V. Mirjalili](https://github.com/vmirly), [S. Raschka](https://github.
 
 ```
 
-## Example Inputs/Outputs
-
-![examples](examples/sampels-1.png)
-
-![examples](examples/sampels-2.png)
