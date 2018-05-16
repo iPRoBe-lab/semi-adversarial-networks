@@ -4,6 +4,7 @@
 #               iPRoBe lab                 #
 #                                          #
 ############################################
+
 from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 from torchvision import transforms
@@ -13,6 +14,7 @@ import pyprind
 import sys
 from PIL import Image
 import os
+
 
 class CelebaDataset(Dataset):
     def __init__(self, image_path, proto_smG_path, proto_opG_path,
@@ -24,13 +26,13 @@ class CelebaDataset(Dataset):
         self.proto_transform = transforms.ToTensor()
         self.mode = mode
         df = pd.read_csv(metadata_path, sep='\s+', skiprows=1)
-        df.Male = df.Male.map({-1: 0, 1:1})
+        df.Male = df.Male.map({-1: 0, 1: 1})
         self.df = df.reset_index()
         #self.flip_rate = flip_rate
 
-        print ('Start preprocessing dataset..!')
+        print('Start preprocessing dataset..!')
         self.preprocess()
-        print ('Finished preprocessing dataset..!')
+        print('Finished preprocessing dataset..!')
 
         if self.mode == 'train':
             self.num_data = len(self.train_filenames)
@@ -38,7 +40,7 @@ class CelebaDataset(Dataset):
             self.num_data = len(self.test_filenames)
 
         print('******', self.num_data)
-        
+
     def preprocess(self):
         image_files = set(os.listdir(self.image_path))
         protoSM_files = set(os.listdir(self.proto_smG_path))
@@ -54,7 +56,6 @@ class CelebaDataset(Dataset):
         #df = self.df.sample(frac=1).reset_index(drop=True)
         pbar = pyprind.ProgBar(len(self.df))
         for row in self.df.iterrows():
-            i = row[0]
             filename = row[1]['index']
             gender = row[1]['Male']
 
@@ -68,30 +69,32 @@ class CelebaDataset(Dataset):
                     self.test_labels.append(gender)
             pbar.update()
         sys.stderr.flush()
-        
+
     def __getitem__(self, index):
         if self.mode == 'train':
             fname = self.train_filenames[index]
             image = Image.open(os.path.join(self.image_path, fname))
             smG_proto = Image.open(os.path.join(self.proto_smG_path, fname))
             opG_proto = Image.open(os.path.join(self.proto_opG_path, fname))
-            
+
             label = (self.train_labels[index],)
-                
-            return (self.transform(image), self.proto_transform(smG_proto), 
+
+            return (self.transform(image), self.proto_transform(smG_proto),
                     self.proto_transform(opG_proto), torch.LongTensor(label))
 
         elif self.mode == 'test':
-            image = Image.open(os.path.join(self.image_path, self.test_filenames[index]))
+            image = Image.open(os.path.join(self.image_path,
+                                            self.test_filenames[index]))
             label = (self.test_labels[index],)
 
             return self.transform(image), torch.LongTensor(label)
 
     def __len__(self):
         return self.num_data
-    
+
+
 def get_loader(image_path, proto_same_path, proto_oppo_path, metadata_path,
-               crop_size=(224,224), image_size=(224,224), batch_size=64,
+               crop_size=(224, 224), image_size=(224, 224), batch_size=64,
                dataset='CelebA', mode='train',
                num_workers=1):
     """Build and return data loader."""
