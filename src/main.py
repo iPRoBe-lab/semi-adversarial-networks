@@ -56,7 +56,7 @@ if use_cuda:
 
 ## gender predictor
 gpred = GenderPredictor()
-gpred.load_state_dict(torch.load('./aux-gpred.pkl'))
+gpred.load_state_dict(torch.load('../model/aux-gpred.pkl'))
 ## freezing the gpred model
 for param in gpred.parameters():
     param.requires_grad = False
