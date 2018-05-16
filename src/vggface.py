@@ -16,7 +16,7 @@ import numpy as np
 use_cuda = True
 
 ## read the gray-correction array
-with open('./vgg_gray_corr_ptch.npz', 'rb') as fp:
+with open('../model/vgg_gray_corr_ptch.npz', 'rb') as fp:
     vgg_gray_corr_ptch = np.load(fp)['arr']
 vgg_gray_corr_ptch = torch.from_numpy(vgg_gray_corr_ptch)
 print(vgg_gray_corr_ptch.size())

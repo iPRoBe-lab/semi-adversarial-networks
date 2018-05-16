@@ -9,4 +9,4 @@ Trained Auxiliary Classifiers
 
 Trained SAN model:
   * Convolutional Autoencoder after 20 epochs (`conv-autoencoder-e20.pkl`)   
-   **Note:** when evaluating the SAN model, the axuciliary subnetworks are discarded.
+   **Note:** when evaluating the SAN model, the auxiliary subnetworks are discarded.
