@@ -50,7 +50,7 @@ data_loader = get_loader(image_path=celeba_imgpath,
 ## autoencoder:
 cae = AutoEncoder()
 # to reload partially trained model:
-# cae.load_state_dict(torch.load(os.path.join(./'conv-autoencoder--{}.pkl'.format()))
+# cae.load_state_dict(torch.load(os.path.join('../model/conv-autoencoder--{}.pkl'.format()))
 if use_cuda:
     cae.cuda()
 
@@ -66,7 +66,7 @@ if use_cuda:
 
 ## VGG face rep:
 vgg = VGGface()
-vgg.load_state_dict(torch.load('./vggface.pt-adj-255.pkl'))
+vgg.load_state_dict(torch.load('../model/vggface.pt-adj-255.pkl'))
 ## freezing the vgg model
 for param in vgg.parameters():
     param.requires_grad = False
