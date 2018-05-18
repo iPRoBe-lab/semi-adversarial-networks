@@ -14,7 +14,7 @@ PyTorch implementation of the semi-adversarial neural network model described in
 
 The model was implemented in PyTorch 0.3.2 using Python 3.6 and may be compatible with different versions of PyTorch and Python, but it has not been tested.
 
-Additional requirements are listed in the [./requirement.txt](./requirement.txt) file. 
+Additional requirements are listed in the [./requirements.txt](./requirements.txt) file. 
 
 
 ## Usage
