@@ -10,8 +10,9 @@ Authors: [V. Mirjalili](https://github.com/vmirly), [S. Raschka](https://github.
 
 
 
-
+**Usage**
 ```
-
+cd src/
+python main.py -gpu 0
 ```
 
