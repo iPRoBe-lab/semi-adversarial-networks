@@ -100,13 +100,12 @@ for epoch in range(0, 20):
         loss_gender_op = F.cross_entropy(input=gpred_op,
                                          target=Variable(1-batch_y[:, 0]).cuda())
 
+        loss_rec = g_loss_rec = torch.mean(torch.abs(x_var - rec_sm))
+
         if epoch < 5:
-            loss_rec = g_loss_rec = torch.mean(torch.abs(x_var - rec_sm))
+            ## the first 5 epochs without matching loss
             loss_match = loss_rec
         else:
-
-            loss_rec = g_loss_rec = torch.mean(torch.abs(x_var - rec_sm))
-
             rep_vgg_sm = vgg(rec_sm)
             rep_vgg_op = vgg(rec_op)
 
