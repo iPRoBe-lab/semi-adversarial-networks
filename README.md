@@ -27,8 +27,6 @@ The source code of the SAN model can be found in the [src](./src) subdirectory, 
 
 The original dataset was obtained from http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html, but the images in the dataset were cropped using DPM model (source code can be found in http://www.robots.ox.ac.uk/~vgg/software/vgg_face/). In addition, we have aligned the prototypes to each input image.
 
-We made these preprocessed images available via the following link. In order to run these
-https://drive.google.com/drive/folders/191levCYjD2U_lL93QJFy_KwSh0jIaMB7?usp=sharing
 
 **Training a SAN model**
 
